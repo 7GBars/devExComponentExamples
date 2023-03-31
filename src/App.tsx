@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 
 import {Grid} from "./components/Grid/Grid";
 import {GantEx1} from "./components/Gantt/examples/ex1/gantEx1";
@@ -18,11 +18,12 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 function App() {
+
+
+
   return (
     <div className="App">
-      {/*<Grid />*/}
-        <GantEx2 />
-        <ToastContainer limit={3}/>
+      <GantEx2/>
     </div>
   );
 }
