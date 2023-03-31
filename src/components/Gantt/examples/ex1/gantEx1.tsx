@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react';
 import {Button, Gantt} from "devextreme-react";
 
-import {gantTasks, gantTasks2, taskDependencies, taskDependencies2, TTaskType} from "../../stores/staticsDataStore";
+import {gantTasks, gantTasks2, taskDependencies, taskDependencies2, TTaskType} from "../../../../stores/staticsDataStore";
 import {toast, ToastContainer} from "react-toastify";
 import {GanttScaleType} from "devextreme/ui/gantt";
 
@@ -12,7 +12,7 @@ type TGantDevExProps = {
 };
 
 
-export function GantDevEx(props: TGantDevExProps) {
+export function GantEx1(props: TGantDevExProps) {
     const [currentTask, setCurrentTask] = useState<TTaskType>();
     const gantRef = useRef<Gantt>(null);
     console.log('render');

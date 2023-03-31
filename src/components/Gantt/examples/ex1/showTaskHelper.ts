@@ -1,5 +1,5 @@
 import dxGantt, {GanttScaleType} from "devextreme/ui/gantt";
-import {TTaskType} from "../../stores/staticsDataStore";
+import {TTaskType} from "../../../../stores/staticsDataStore";
 
 import {toast} from "react-toastify";
 
