@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       {/*<Grid />*/}
-      <GantDevEx test/>
+      <GantDevEx test={false}/>
         <ToastContainer limit={3}/>
     </div>
   );
