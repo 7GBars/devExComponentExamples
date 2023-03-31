@@ -1,24 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
+
+import {Grid} from "./components/Grid/Grid";
+import {GantDevEx} from "./components/Gantt/GantDevEx";
+import {ToastContainer} from "react-toastify";
+
 import './App.css';
+import 'devextreme/dist/css/dx.light.css';
+import 'devexpress-gantt/dist/dx-gantt.css';
+import "react-toastify/dist/ReactToastify.css";
+
+
+
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/*<Grid />*/}
+      <GantDevEx test/>
+        <ToastContainer limit={3}/>
     </div>
   );
 }
