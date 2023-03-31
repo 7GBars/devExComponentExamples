@@ -1,83 +1,4 @@
-export type TTaskType = {
-    id: number;
-    parentId: number;
-    title: string;
-    start: Date;
-    end: Date;
-    progress: number;
-    color?: string;
-}
-
-export const gantTasks: TTaskType[] = [
-    {
-        'id': 1,
-        'parentId': 0,
-        'title': 'Software Development years',
-        'start': new Date('2019-02-21T05:00:00.000Z'),
-        'end': new Date('2022-07-04T12:00:00.000Z'),
-        'progress': 20,
-        'color': 'green'
-    },
-    {
-    'id': 2,
-    'parentId': 1,
-    'title': 'Software Development quarters',
-    'start': new Date('2019-02-21T05:00:00.000Z'),
-    'end': new Date('2019-08-04T12:00:00.000Z'),
-    'progress': 20,
-    'color': 'yellow'
-    },
-    {
-        'id': 3,
-        'parentId': 2,
-        'title': 'Scope',
-        'start': new Date('2019-02-21T05:00:00.000Z'),
-        'end': new Date('2019-04-26T09:00:00.000Z'),
-        'progress': 60
-    },
-    {
-        'id': 4,
-        'parentId': 3,
-        'title': 'Determine project scope',
-        'start': new Date('2019-02-21T05:00:00.000Z'),
-        'end': new Date('2019-03-21T09:00:00.000Z'),
-        'progress': 100
-    },
-
-
-    {
-        'id': 5,
-        'parentId': 4,
-        'title': 'Determine project scope',
-        'start': new Date('2019-02-25T05:00:00.000Z'),
-        'end': new Date('2019-02-31T09:00:00.000Z'),
-        'progress': 100
-    },
-    {
-        'id': 6,
-        'parentId': 5,
-        'title': 'Determine project scope',
-        'start': new Date('2019-02-25T05:00:00.000Z'),
-        'end': new Date('2019-02-30T09:00:00.000Z'),
-        'progress': 100
-    },
-    {
-        'id': 7,
-        'parentId': 5,
-        'title': 'Test hours',
-        'start': new Date('2019-02-25T05:00:00.000Z'),
-        'end': new Date('2019-02-25T09:00:00.000Z'),
-        'progress': 100
-    }
-];
-export const taskDependencies = [{
-    'id': 1,
-    'predecessorId': 2,
-    'successorId': 3,
-    'type': 4
-}];
-
-export const gantTasks2 = [{
+export const tasks = [{
     id: 1,
     parentId: 0,
     title: 'Software Development',
@@ -688,7 +609,7 @@ export const gantTasks2 = [{
     progress: 0,
 }];
 
-export const taskDependencies2 = [{
+export const dependencies = [{
     id: 1,
     predecessorId: 3,
     successorId: 4,
@@ -1283,3 +1204,14 @@ export const resourceAssignments = [{
     taskId: 85,
     resourceId: 2,
 }];
+
+
+export type TTaskType = {
+    id: number;
+    parentId: number;
+    title: string;
+    start: Date;
+    end: Date;
+    progress: number;
+    color?: string;
+}

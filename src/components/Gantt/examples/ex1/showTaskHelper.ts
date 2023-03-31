@@ -1,7 +1,8 @@
 import dxGantt, {GanttScaleType} from "devextreme/ui/gantt";
-import {TTaskType} from "../../../../stores/staticsDataStore";
+
 
 import {toast} from "react-toastify";
+import {TTaskType} from "./data";
 
 type TScaleTypes = 'minutes' | 'hours' | 'sixHours' | 'days' | 'weeks' | 'months' | 'quarters' | 'years';
 

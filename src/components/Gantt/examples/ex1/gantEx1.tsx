@@ -1,12 +1,15 @@
 import React, {useRef, useState} from 'react';
 import {Button, Gantt} from "devextreme-react";
 
-import {gantTasks, gantTasks2, taskDependencies, taskDependencies2, TTaskType} from "../../../../stores/staticsDataStore";
-import {toast, ToastContainer} from "react-toastify";
-import {GanttScaleType} from "devextreme/ui/gantt";
+import {
+    tasks, dependencies, resources, resourceAssignments, TTaskType,
+} from './data';
+import {ShowTaskHelper} from "./showTaskHelper";
+import {Column, Dependencies, Item, ResourceAssignments, Resources, Tasks, Toolbar} from "devextreme-react/gantt";
+
 
 import './gantDevExStyles.css';
-import {ShowTaskHelper} from "./showTaskHelper";
+
 type TGantDevExProps = {
     test?: boolean;
 };
@@ -17,60 +20,41 @@ export function GantEx1(props: TGantDevExProps) {
     const gantRef = useRef<Gantt>(null);
     console.log('render');
     return (
-        <div className={'gant-component-container'}>
-            <div className={'fixed-box'}>
-                <Button text={'Select task'} onClick={(e) => {
-                    const gantInstance = gantRef.current?.instance;
-                    ShowTaskHelper.ShowTaskOnDiagram(currentTask, gantInstance);
+        <>
 
-                }}/>
-            </div>
 
             <Gantt
                 ref={gantRef}
-                tasks={ {dataSource: gantTasks} }
-                dependencies={{dataSource: taskDependencies}}
-                columns={[
-                    {
-                        dataField: 'title',
-                        caption: 'Задача',
-                        width: 100,
-                    }, {
-                        dataField: 'start',
-                        caption: 'Начало',
-                        width: 100,
-                    }, {
-                        dataField: 'end',
-                        caption: 'Конец',
-                        width: 100,
-
-                    }
-                ]}
-
                 scaleType={'auto'}
-
-                editing={{enabled: true}}
+                taskListWidth={500}
+                height={700}
                 onTaskClick={(e) => {
-
                     setCurrentTask(e.data)
                 }}
-            />
+                taskTimeTooltipContentTemplate={(e) => {
+                    console.log('e')
+                }}
+            >
 
-            {/*<ToastContainer*/}
-            {/*    position="top-right"*/}
-            {/*    autoClose={5000}*/}
-            {/*    hideProgressBar={false}*/}
-            {/*    newestOnTop={false}*/}
-            {/*    closeOnClick*/}
-            {/*    rtl={false}*/}
-            {/*    pauseOnFocusLoss*/}
-            {/*    draggable*/}
-            {/*    pauseOnHover*/}
-            {/*    theme="light"*/}
-            {/*/>*/}
-            {/*/!* Same as *!/*/}
-            {/*<ToastContainer />*/}
-        </div>
+                <Column dataField="title" caption="Subject" width={300} />
+                <Column dataField="start" caption="Start Date" />
+                <Column dataField="end" caption="End Date" />
+                <Toolbar>
+                    <Item options={{
+                        hint: "Показать на диаграмме",
+                        icon: 'rowfield',
+                        onClick: async (e: any) => {
+                            const gantInstance = gantRef.current?.instance;
+                            ShowTaskHelper.ShowTaskOnDiagram(currentTask, gantInstance);
+                        },
+                    }} />
+                </Toolbar>
+                <Tasks dataSource={tasks} />
+                <Dependencies dataSource={dependencies} />
+                {/*<Resources dataSource={resources} />*/}
+                {/*<ResourceAssignments dataSource={resourceAssignments} />*/}
+            </Gantt>
+        </>
     );
 }
 
