@@ -12,8 +12,13 @@ const dataSource = AspNetData.createStore({
 
 type TGridProps = {children?: ReactNode}
 
+const columnsInfo = ['Id', 'StoreName', 'ProductCategoryName', 'ProductName', 'DateKey', 'SalesAmount'];
 
 export const Grid = (props: TGridProps) =>  {
+
+    const columnsJSX = columnsInfo.map((c) => {
+            return <Column dataField={c} caption={c + 'test'}/>
+    })
     const gridRef = useRef(null);
         return (<>
                 <DataGrid
@@ -23,19 +28,12 @@ export const Grid = (props: TGridProps) =>  {
                     showBorders={true}
                     remoteOperations={true}
                     wordWrapEnabled={false}
+                    allowColumnResizing
                 >
                     <Scrolling mode="virtual" rowRenderingMode="virtual" />
                     <Paging defaultPageSize={100} />
                     <HeaderFilter visible={true} allowSearch={true} />
-
-                    <Column dataField="Id" />
-                    <Column dataField="StoreName" caption="Store" />
-                    <Column dataField="ProductCategoryName" caption="Category" />
-                    <Column dataField="ProductName" caption="Product" />
-                    <Column dataField="DateKey" caption="Date" dataType="date" format="yyyy-MM-dd" />
-                    <Column dataField="SalesAmount" caption="Amount" format="currency">
-                        <HeaderFilter groupInterval={1000} />
-                    </Column>
+                    {columnsJSX}
                 </DataGrid>
         </>
         );
