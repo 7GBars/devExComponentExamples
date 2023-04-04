@@ -44,6 +44,7 @@ export const Grid = (props: TGridProps) =>  {
                         on(e.cellElement, "mouseover", (arg: any) => {
                             if (e.cellElement.offsetWidth < e.cellElement.scrollWidth) {
                                 e.cellElement.title = e.displayValue;
+                                console.log('test')
                             }
                         })
                     }}
