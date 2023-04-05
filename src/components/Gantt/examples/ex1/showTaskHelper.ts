@@ -15,11 +15,12 @@ export class ShowTaskHelper {
         YEAR: 360
     };
     public static ShowTaskOnDiagram(currentTask?: TTaskType, gantInstance?: dxGantt) {
+
        if (currentTask && gantInstance) {
-           const scaleType = this.setScaleType(currentTask);
+           const taskInfo = this.getSavedSelectedTaskInfo(currentTask);
+           const scaleType = this.setScaleType(taskInfo);
            gantInstance.option('scaleType', scaleType);
-           gantInstance.scrollToDate(currentTask.start.getTime());
-           console.log('change scale', scaleType)
+           gantInstance.scrollToDate(taskInfo.start.getTime());
        }
        else {
            toast.warn("Выберите задачу!", {
@@ -62,5 +63,14 @@ export class ShowTaskHelper {
                 return scaleType = 'hours';
             }
         }
+    }
+
+    public static getSavedSelectedTaskInfo(taskInfo: TTaskType):  TTaskType {
+        if( taskInfo ) {
+            /* из localStorage Date приходит  стрингой */
+            taskInfo.start = new Date(taskInfo.start as unknown as string);
+            taskInfo.end = new Date(taskInfo.end as unknown as string);
+        }
+        return taskInfo;
     }
 }
