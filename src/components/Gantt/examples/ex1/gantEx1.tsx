@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {Button, Gantt} from "devextreme-react";
+import {Button, Gantt, ScrollView} from "devextreme-react";
 
 import {
     tasks, dependencies, resources, resourceAssignments, TTaskType,
@@ -18,6 +18,8 @@ type TGantDevExProps = {
 export function GantEx1(props: TGantDevExProps) {
     const currentTaskRef = useRef();
     const gantRef = useRef<Gantt>(null);
+    const gantScrollViewRef = useRef<ScrollView>();
+
     return (
         <>
 
@@ -35,13 +37,34 @@ export function GantEx1(props: TGantDevExProps) {
 
 
                 onContentReady={(e) => {
-                    const savedCurrentTask =  localStorage.getItem('currentTask');
+                    const savedCurrentTask =  JSON.parse(localStorage.getItem('currentTask') ?? '');
                     const gantInstance = gantRef.current?.instance;
+
+
                     if (savedCurrentTask && gantInstance) {
                         setTimeout(() => {
-                            ShowTaskHelper.ShowTaskOnDiagram(JSON.parse(savedCurrentTask), gantInstance);
-                        }, 0)
+                        gantInstance.option('selectedRowKey', savedCurrentTask.id);
+                        const ganttScrollView = ShowTaskHelper.GetGanttScrollViewInstance(gantInstance, gantScrollViewRef);
+                            ganttScrollView.on('scroll', (e: any) => {
+                                const positionInfo = e.scrollOffset as { top: number, left: number }
+                                if (positionInfo.top == 0) return;
+                                else {
+                                    localStorage.setItem('scrollInfo', JSON.stringify(e.scrollOffset))
+                                    console.log('запись',e.scrollOffset)
+                                }
 
+                            });
+
+
+                            ShowTaskHelper.ShowTaskOnDiagram(savedCurrentTask, gantInstance).then(() => {
+                                let savedScrollPosition = JSON.parse(localStorage.getItem('scrollInfo') ?? '')
+                                if (savedScrollPosition) {
+
+                                            ganttScrollView.scrollTo(savedScrollPosition);
+                                }
+                            })
+
+                        }, 0);
                     }
 
                     // console.log('onContentReady')
@@ -75,16 +98,17 @@ export function GantEx1(props: TGantDevExProps) {
                 <Tasks dataSource={tasks} />
                 <Dependencies dataSource={dependencies} />
             </Gantt>
-            {/*<Button text={'getScrollView'} onClick={(e) => {*/}
-            {/*    const gantInstance = gantRef.current!.instance;*/}
-            {/*    //@ts-ignore*/}
-            {/*    let a = gantInstance._ganttView._taskAreaContainer._scrollView;*/}
-            {/*    a.on('scroll', (e: any) => {*/}
-            {/*        console.log(e.scrollOffset);*/}
-            {/*        localStorage.setItem('scrollInfo', JSON.stringify(e.scrollOffset))*/}
-            {/*    })*/}
-            {/*    console.log('gantInstance._ganttTreeList', a)*/}
-            {/*}}/>*/}
+            <Button text={'getScrollView'} onClick={(e) => {
+                const gantInstance = gantRef.current?.instance;
+                if(gantInstance) {
+
+                    let savedScrollPosition = JSON.parse(localStorage.getItem('scrollInfo') ?? '');
+                    const ganttScrollView = ShowTaskHelper.GetGanttScrollViewInstance(gantInstance, gantScrollViewRef);
+                    // console.log(savedScrollPosition)
+                    ganttScrollView.scrollTo({top: 400, left: 1899})
+                }
+
+            }}/>
         </>
     );
 }
