@@ -1,7 +1,8 @@
+import {MutableRefObject} from "react";
 import dxGantt, {GanttScaleType} from "devextreme/ui/gantt";
-
-
+import {IScrollViewOptions, ScrollView} from "devextreme-react/scroll-view";
 import {toast} from "react-toastify";
+
 import {TTaskType} from "./data";
 
 type TScaleTypes = 'minutes' | 'hours' | 'sixHours' | 'days' | 'weeks' | 'months' | 'quarters' | 'years';
@@ -14,7 +15,7 @@ export class ShowTaskHelper {
         QUARTER: 91,
         YEAR: 360
     };
-    public static ShowTaskOnDiagram(currentTask?: TTaskType, gantInstance?: dxGantt) {
+    public static async ShowTaskOnDiagram(currentTask?: TTaskType, gantInstance?: dxGantt) {
 
        if (currentTask && gantInstance) {
            const taskInfo = this.getSavedSelectedTaskInfo(currentTask);
@@ -72,5 +73,11 @@ export class ShowTaskHelper {
             taskInfo.end = new Date(taskInfo.end as unknown as string);
         }
         return taskInfo;
+    }
+
+    public static GetGanttScrollViewInstance(gantInstance: dxGantt, gantScrollViewRef: MutableRefObject<ScrollView | undefined>) {
+        //@ts-ignore
+        const scrollView = gantInstance._ganttView._taskAreaContainer._scrollView;
+        return gantScrollViewRef.current = scrollView;
     }
 }
