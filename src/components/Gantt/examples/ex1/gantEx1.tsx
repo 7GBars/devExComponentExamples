@@ -43,8 +43,8 @@ export function GantEx1(props: TGantDevExProps) {
 
                     if (savedCurrentTask && gantInstance) {
                         setTimeout(() => {
-                        gantInstance.option('selectedRowKey', savedCurrentTask.id);
-                        const ganttScrollView = ShowTaskHelper.GetGanttScrollViewInstance(gantInstance, gantScrollViewRef);
+                            gantInstance.option('selectedRowKey', savedCurrentTask.id);
+                            const ganttScrollView = ShowTaskHelper.GetGanttScrollViewInstance(gantInstance, gantScrollViewRef);
                             ganttScrollView.on('scroll', (e: any) => {
                                 const positionInfo = e.scrollOffset as { top: number, left: number }
                                 if (positionInfo.top == 0) return;
@@ -59,7 +59,7 @@ export function GantEx1(props: TGantDevExProps) {
                             ShowTaskHelper.ShowTaskOnDiagram(savedCurrentTask, gantInstance).then(() => {
                                 let savedScrollPosition = JSON.parse(localStorage.getItem('scrollInfo') ?? '')
                                 if (savedScrollPosition) {
-                                            ganttScrollView.scrollTo(savedScrollPosition);
+                                    ganttScrollView.scrollTo(savedScrollPosition);
                                 }
                             })
                         }, 0);
@@ -96,17 +96,7 @@ export function GantEx1(props: TGantDevExProps) {
                 <Tasks dataSource={tasks} />
                 <Dependencies dataSource={dependencies} />
             </Gantt>
-            <Button text={'getScrollView'} onClick={(e) => {
-                const gantInstance = gantRef.current?.instance;
-                if(gantInstance) {
 
-                    let savedScrollPosition = JSON.parse(localStorage.getItem('scrollInfo') ?? '');
-                    const ganttScrollView = ShowTaskHelper.GetGanttScrollViewInstance(gantInstance, gantScrollViewRef);
-                    // console.log(savedScrollPosition)
-                    ganttScrollView.scrollTo({top: 400, left: 1899})
-                }
-
-            }}/>
         </>
     );
 }
