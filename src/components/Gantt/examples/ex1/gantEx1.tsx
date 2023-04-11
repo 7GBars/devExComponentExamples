@@ -20,11 +20,11 @@ export function GantEx1(props: TGantDevExProps) {
     const gantRef = useRef<Gantt>(null);
     const gantScrollViewRef = useRef<ScrollView>();
     const scaleScanner = (e: any) => {
+        console.log('scaleScanner')
         let scaleElement = e.scaleElement as any;
         if(e.scaleIndex === 0) {
-            console.log('e.scaleElement.offsetWidth', e.scaleElement.offsetWidth);
-            console.log('client width', e.scaleElement.clientWidth)
-            localStorage.setItem('scaleType', e.scaleType)
+            localStorage.setItem('scaleType', e.scaleType);
+            localStorage.setItem('scaleElementWidth',scaleElement.clientWidth);
             scaleElement.style.backgroundColor = "silver";
         }
 
@@ -52,18 +52,20 @@ export function GantEx1(props: TGantDevExProps) {
 
                     const [scaleType, scrollInfo] = ShowTaskHelper.getInitData();
 
-                    console.log('contentReady saved scrollInfo', scrollInfo)
+
                     setTimeout(() => {
 
 
                         if(gantInstance) {
                             ShowTaskHelper.getScrollViewAndStartToSavePosition(gantInstance!);
-                            ShowTaskHelper.GoToSavedScrollPosition(gantInstance).then(() => {
-                                ShowTaskHelper.SetScaleType(gantInstance, scaleType as any)
+                            ShowTaskHelper.SetScaleType(gantInstance, scaleType as any).then(() => {
+                                ShowTaskHelper.GoToSavedScrollPosition(gantInstance);
+
                             })
+
                             gantInstance?.on('scaleCellPrepared', scaleScanner);
                         }
-                    }, 2000)
+                    }, 0)
                     // if (savedCurrentTask && gantInstance) {
                     //     setTimeout(() => {
                     //         gantInstance.option('selectedRowKey', savedCurrentTask.id);

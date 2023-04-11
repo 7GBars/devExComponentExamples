@@ -5,7 +5,8 @@ import {toast} from "react-toastify";
 
 import {TTaskType} from "./data";
 
-export type TScaleTypes = 'minutes' | 'hours' | 'sixHours' | 'days' | 'weeks' | 'months' | 'quarters' | 'years';
+export type TScaleTypes = GanttScaleType;
+//'auto' | 'minutes' | 'hours' | 'sixHours' | 'days' | 'weeks' | 'months' | 'quarters' | 'years'
 
 export class ShowTaskHelper {
     private static readonly DAY_LIMITERS = {
@@ -15,6 +16,16 @@ export class ShowTaskHelper {
         QUARTER: 91,
         YEAR: 360
     };
+    private static readonly SCALE_ELEMENT_WIDTH = {
+        years: 62,
+        quarters: 50,
+        months: 100,
+        weeks: 206,
+        days: 112,
+        sixHours: 91,
+        hours: 91,
+        minutes: 47
+    }
     public static async ShowTaskOnDiagram(currentTask?: TTaskType, gantInstance?: dxGantt) {
        if (currentTask && gantInstance) {
            const taskInfo = this.getSavedSelectedTaskInfo(currentTask);
@@ -84,12 +95,8 @@ export class ShowTaskHelper {
             setTimeout(() => {
                 const scrollView = this.GetGanttScrollViewInstance(gantInstance)
                 scrollView.on('scroll', (e: any) => {
-                    const positionInfo = e.scrollOffset as { top: number, left: number }
-                    console.log(e.scrollOffset)
-                    if (positionInfo.top == 0) return;
-                    else {
+                        const positionInfo = e.scrollOffset as { top: number, left: number }
                         localStorage.setItem('scrollInfo', JSON.stringify(e.scrollOffset))
-                    }
                 });
             }, 1000)
     }
@@ -102,11 +109,35 @@ export class ShowTaskHelper {
     public static async SetScaleType(ganttInstance: dxGantt | undefined,  scaleType: TScaleTypes | undefined) {
         ganttInstance && ganttInstance?.option('scaleType',  scaleType ?? 'auto');
     }
-    public static async GoToSavedScrollPosition(gantInstance: dxGantt) {
+    public static GoToSavedScrollPosition(gantInstance: dxGantt) {
+        this._zoomGantt(gantInstance);
         const scrollViewInstance = this.GetGanttScrollViewInstance(gantInstance);
         const savedPosition = localStorage.getItem('scrollInfo');
         const saved = JSON.parse(savedPosition ?? '')
-        console.log(saved)
         scrollViewInstance && scrollViewInstance.scrollTo(saved);
+
     }
+
+    private static _zoomGantt(gantInstance: dxGantt) {
+        let zoomIndex = this._zoomChecker();
+        if (zoomIndex) {
+            if (zoomIndex === 1) return;
+            gantInstance.beginUpdate();
+            while (zoomIndex !== 1) {
+                gantInstance.zoomIn();
+                zoomIndex--
+            }
+            gantInstance.beginUpdate();
+        }
+    }
+
+    private static _zoomChecker(){
+        const scaleType = localStorage.getItem('scaleType') as keyof typeof ShowTaskHelper.SCALE_ELEMENT_WIDTH;
+        const scaleElementWidth = JSON.parse(localStorage.getItem('scaleElementWidth') ?? 'null')
+        if(scaleType && scaleElementWidth) {
+           const standardScaleWidth = this.SCALE_ELEMENT_WIDTH[scaleType];
+           const zoomIndex = scaleElementWidth / standardScaleWidth;
+           return Math.round(zoomIndex);
+        }
+    };
 }
