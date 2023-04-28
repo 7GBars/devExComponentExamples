@@ -6,8 +6,9 @@ import 'devextreme/dist/css/dx.light.css';
 import 'devexpress-gantt/dist/dx-gantt.css';
 import "react-toastify/dist/ReactToastify.css";
 import {DataGridEmbedded} from "./components/DropDownBox/embedded component/DataGridEmbedded";
-import {getCustomSource__loadMode_row} from "./1_dataSources/customStores/custom--loadMode-raw";
+import {getCustomSource__loadMode_row} from "./1_stores/customStores/custom--loadMode-raw";
 import {SimpleWrapperComponent} from "./wrappers/SimplewrapperComponent";
+import {GridWithVirtualScroll} from "./components/Grid/GridWithVirtualScroll";
 
 
 
@@ -18,7 +19,7 @@ import {SimpleWrapperComponent} from "./wrappers/SimplewrapperComponent";
 function App() {
   return (
     <div className="App">
-        <SimpleWrapperComponent/>
+      <GridWithVirtualScroll name={'virtualScrollDataGrid'}/>
     </div>
   );
 }
