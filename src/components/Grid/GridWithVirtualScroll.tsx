@@ -17,10 +17,14 @@ export function GridWithVirtualScroll(props: TCommonProps) {
                 wordWrapEnabled={true}
             >
                 <Scrolling mode="virtual" />
-                <Paging defaultPageSize={100} />
+                <Paging
+                    defaultPageSize={100}
+                    defaultPageIndex={4}
+                />
                 <Pager
                     visible={true}
                     showPageSizeSelector
+
                 />
             </DataGrid>
         </div>
