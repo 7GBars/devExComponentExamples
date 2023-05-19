@@ -9,6 +9,7 @@ import {DataGridEmbedded} from "./components/DropDownBox/embedded component/Data
 import {getCustomSource__loadMode_row} from "./1_stores/customStores/custom--loadMode-raw";
 import {SimpleWrapperComponent} from "./wrappers/SimplewrapperComponent";
 import {GridWithVirtualScroll} from "./components/Grid/GridWithVirtualScroll";
+import {GridWithEncodeHTMLColumns} from "./components/Grid/Grid";
 
 
 
@@ -19,7 +20,8 @@ import {GridWithVirtualScroll} from "./components/Grid/GridWithVirtualScroll";
 function App() {
   return (
     <div className="App">
-      <GridWithVirtualScroll name={'virtualScrollDataGrid'}/>
+      {/*<GridWithVirtualScroll name={'virtualScrollDataGrid'}/>*/}
+      <GridWithEncodeHTMLColumns/>
     </div>
   );
 }

@@ -1,12 +1,14 @@
 import React, {ReactNode, useRef} from 'react';
+import DOMPurify from 'dompurify';
 
 import DataGrid, {
-    Scrolling, Paging, Column, HeaderFilter, FilterRow, FilterPanel, FilterBuilderPopup, ColumnChooser,
-} from 'devextreme-react/data-grid';
+    Scrolling, Paging, Column, HeaderFilter, FilterRow, FilterPanel, FilterBuilderPopup, ColumnChooser } from 'devextreme-react/data-grid';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 
 import {on} from "devextreme/events";
 import {Button} from "devextreme-react";
+
+
 
 const dataSource = AspNetData.createStore({
     key: 'Id',
@@ -79,3 +81,32 @@ export const Grid = (props: TGridProps) => {
 }
 
 
+
+
+export function GridWithEncodeHTMLColumns() {
+    const dataSource = [
+        { id: 1, name: 'John', age: 25, htmlData:'<div>as</div>'},
+        { id: 2, name: 'Jane', age: 30, htmlData:'<b>b</b>'}
+    ];
+
+    return (
+        <DataGrid
+            dataSource={dataSource}
+            showBorders={true}
+            columnAutoWidth={true}>
+            <Column
+                dataField="htmlData"
+                caption="HTML"
+                encodeHtml={true}
+                // cellTemplate={(cellElement: any, cellInfo: any) => {
+                //     const text = document.createTextNode(cellInfo.value);
+                //     cellElement.appendChild(text); как текст
+                // }}
+                cellTemplate={(cellElement: any, cellInfo: any) => {
+                    cellElement.innerHTML = DOMPurify.sanitize(cellInfo.value)
+                    // как сюда DOMPurify.sanitize форматировано
+                }}
+            />
+        </DataGrid>
+    );
+}
