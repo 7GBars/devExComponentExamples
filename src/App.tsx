@@ -5,6 +5,7 @@ import 'devexpress-gantt/dist/dx-gantt.css';
 import "react-toastify/dist/ReactToastify.css";
 
 import {GridSorting} from "./components/Grid/GridSorting";
+import {GridWithVirtualScroll} from "./components/Grid/GridWithVirtualScroll";
 
 
 
@@ -16,7 +17,7 @@ import {GridSorting} from "./components/Grid/GridSorting";
 function App() {
   return (
     <div className="App">
-      <GridSorting/>
+      <GridWithVirtualScroll name={'scroll test'}/>
     </div>
   );
 }
