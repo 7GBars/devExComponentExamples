@@ -5,11 +5,10 @@ import './App.css';
 import 'devextreme/dist/css/dx.light.css';
 import 'devexpress-gantt/dist/dx-gantt.css';
 import "react-toastify/dist/ReactToastify.css";
-import {DataGridEmbedded} from "./components/DropDownBox/embedded component/DataGridEmbedded";
-import {getCustomSource__loadMode_row} from "./1_stores/customStores/custom--loadMode-raw";
-import {SimpleWrapperComponent} from "./wrappers/SimplewrapperComponent";
-import {GridWithVirtualScroll} from "./components/Grid/GridWithVirtualScroll";
-import {GridWithEncodeHTMLColumns} from "./components/Grid/Grid";
+
+
+import {ReflexDemo} from "./components/Rezible/Resizeble";
+
 
 
 
@@ -20,8 +19,7 @@ import {GridWithEncodeHTMLColumns} from "./components/Grid/Grid";
 function App() {
   return (
     <div className="App">
-      {/*<GridWithVirtualScroll name={'virtualScrollDataGrid'}/>*/}
-      <GridWithEncodeHTMLColumns/>
+      <ReflexDemo/>
     </div>
   );
 }
