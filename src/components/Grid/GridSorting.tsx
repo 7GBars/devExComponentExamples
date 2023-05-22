@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect, useRef} from 'react';
 import { DataGrid, Column } from 'devextreme-react/data-grid';
+import {Button} from "devextreme-react/button";
 
 
 interface Person {
@@ -21,13 +22,27 @@ interface SortOption {
 }
 
 export function GridSorting() {
-
+    const gridRef = useRef<DataGrid>(null);
     return (
-        <DataGrid dataSource={dataSource} >
-            <Column dataField="id" sortOrder={'desc'}/>
-            <Column dataField="name" />
-            <Column dataField="age" />
-            <Column dataField="gender" />
-        </DataGrid>
+        <>
+            <Button
+                text={'my buttons'}
+                icon={'add'}
+                onClick={() => {
+                    //@ts-ignore
+                    const columnsIds = gridRef.current?.instance.getVisibleColumns();
+                    console.log(columnsIds)
+                    gridRef.current?.instance.columnOption('id', 'allowSorting', false);
+                    gridRef.current?.instance.columnOption('name', 'allowSorting', false);
+                }}
+            />
+
+            <DataGrid dataSource={dataSource} ref={gridRef} >
+                <Column dataField="id" sortOrder={'desc'}/>
+                <Column dataField="name" />
+                <Column dataField="age" />
+                <Column dataField="gender" />
+            </DataGrid>
+        </>
     );
 }
