@@ -1,13 +1,10 @@
-import React, {ReactNode, useState} from 'react';
-import {DropDownBoxTest, TDataGridEmbeddedProps} from "./components/DropDownBox/DropDownBoxTest";
-
+import React from 'react';
 import './App.css';
 import 'devextreme/dist/css/dx.light.css';
 import 'devexpress-gantt/dist/dx-gantt.css';
 import "react-toastify/dist/ReactToastify.css";
 
-
-import {ReflexDemo} from "./components/Rezible/Resizeble";
+import {GridSorting} from "./components/Grid/GridSorting";
 
 
 
@@ -19,7 +16,7 @@ import {ReflexDemo} from "./components/Rezible/Resizeble";
 function App() {
   return (
     <div className="App">
-      <ReflexDemo/>
+      <GridSorting/>
     </div>
   );
 }
