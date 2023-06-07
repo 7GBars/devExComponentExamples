@@ -13,11 +13,12 @@
     "@types/react-dom": "^18.0.11",
     "@types/react-grid-layout": "^1.3.2",
     "@types/react-resizable": "^3.0.4",
+    "@types/uuid4": "^2.0.0",
     "devextreme": "22.2.4",
     "devextreme-aspnet-data-nojquery": "^2.9.2",
     "devextreme-react": "22.2.4",
     "dompurify": "^3.0.3",
-    "mobx": "^6.8.0",
+    "mobx": "^6.9.0",
     "mobx-react-lite": "^3.4.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -28,6 +29,7 @@
     "react-toastify": "^9.1.1",
     "typescript": "^4.9.5",
     "url-join-ts": "^1.0.5",
+    "uuidv4": "^6.2.13",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
