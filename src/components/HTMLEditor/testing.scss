@@ -1,0 +1,12 @@
+.container {
+  background-color: #5c57c9;
+  height: 500px;
+  & .container__item--1 {
+    background-color: red;
+    height: 50%;
+  }
+  & .container__item--2 {
+    background-color: greenyellow;
+    height: 50%;
+  }
+}

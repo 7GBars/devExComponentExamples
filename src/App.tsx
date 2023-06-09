@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import {GridSorting} from "./components/Grid/GridSorting";
 import {GridWithVirtualScroll} from "./components/Grid/GridWithVirtualScroll";
+import {Testing} from "./components/HTMLEditor/Testing";
 
 
 
@@ -17,7 +18,7 @@ import {GridWithVirtualScroll} from "./components/Grid/GridWithVirtualScroll";
 function App() {
   return (
     <div className="App">
-      <GridWithVirtualScroll name={'scroll test'}/>
+      <Testing name={'tools hidden menu dropdownMenu test'}/>
     </div>
   );
 }
