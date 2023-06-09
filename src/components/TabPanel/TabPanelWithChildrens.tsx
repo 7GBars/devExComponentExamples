@@ -9,15 +9,15 @@ type TTabPanelProps = PropsWithChildren<TTabPanelOwnProps>;
 
 export function TabPanelWithChildren(props: TTabPanelProps) {
   return (
-    <>
-      <TabPanel>
+
+      <TabPanel height={'100%'}>
         {props.tabs.map((item) => (
           <Item key={item.title} title={item.title}>
-            {props.children}
+            {item.title === 'Tab 1' && props.children}
           </Item>
         ))}
       </TabPanel>
-    </>
+
   );
 }
 

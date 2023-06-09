@@ -17,8 +17,9 @@ export function Testing(props:  TestProps) {
         <div className={'container'}>
             <div className={'container__item--1'}>Some Info</div>
             <div className={'container__item--2'}>
-              <TabPanelWithChildren tabs={tabItems} >
-               <MyHtmlEditor/>
+              <TabPanelWithChildren tabs={tabItems}>
+                <div>просто для вида</div>
+                <MyHtmlEditor/>
               </TabPanelWithChildren>
             </div>
         </div>
