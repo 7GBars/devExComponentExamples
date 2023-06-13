@@ -3,6 +3,8 @@ import CheckBox from 'devextreme-react/check-box';
 import TabPanel from 'devextreme-react/tab-panel';
 import './TabPanel.css';
 import {CompanyItem} from './data/CompanyItem'
+import {useStore} from "../../3_wrappers/StoreWrapper";
+import {toJS} from "mobx";
 
 export const multiViewItems = [{
     ID: 1,
@@ -27,6 +29,8 @@ export const multiViewItems = [{
 }];
 
 export const TabPanelEx = (props: {tabPanelRef: any}) => {
+    const store = useStore();
+   
     const [animationEnabled, setAnimationEnabled] = useState(true);
     const [swipeEnabled, setSwipeEnabled] = useState(true);
     const [loop, setLoop] = useState(false);

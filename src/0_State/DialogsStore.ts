@@ -8,14 +8,14 @@ type TDialogs = {
 export class DialogsStore {
   public dialogs: TDialogs;
   public createDialogId() {
-    return uuid4();
+    return 'as';
   }
   constructor() {
     this.dialogs = {}
     makeAutoObservable(this);
   }
   public openDialog(dialogId: string) {
-    this.dialogs &&( this.dialogs[dialogId].isOpen = true );
+    this.dialogs && ( this.dialogs[dialogId].isOpen = true );
   }
   public closeDialog(dialogId: string) {
     this.dialogs && ( this.dialogs[dialogId].isOpen = false );
