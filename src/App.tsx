@@ -23,7 +23,7 @@ function App() {
   const tabRef = useRef();
   return (
     <div className="App">
-      <StoreWrapper name={'dialogs'}> //todo подумать как унифисицировать обертку store
+      <StoreWrapper name={'dialogs'}>
          <TabPanelEx tabPanelRef={tabRef}/>
          <Dialogs/>
       </StoreWrapper>

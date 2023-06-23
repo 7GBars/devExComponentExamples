@@ -1,4 +1,9 @@
 import React from 'react';
+import {Button} from "devextreme-react/button";
+import {ClickEvent} from "devextreme/ui/button";
+import {observer} from "mobx-react-lite";
+import {useStore} from "../../../3_wrappers/StoreWrapper";
+import {DialogsStore} from "../../../0_State/DialogsStore";
 
 interface CompanyData {
     City: string;
@@ -10,7 +15,13 @@ interface CompanyData {
     Website: string;
 }
 
-export const CompanyItem: React.FC<{ data: CompanyData }> = ({ data }) => {
+export const CompanyItem: React.FC<{ data: CompanyData }> = observer(({ data }) => {
+    const dialogStore = useStore();
+
+    const openDialogHandler = (e: ClickEvent) => {
+        const dialogId = DialogsStore.generateDialogKey();
+        dialogStore?.openDialog(dialogId, data.City, data.Phone);
+    }
     return (
         <div>
             <div className="tabpanel-item">
@@ -32,16 +43,11 @@ export const CompanyItem: React.FC<{ data: CompanyData }> = ({ data }) => {
                         Fax: <b>{ data.Fax }</b>
                     </p>
                     <p>
-                        Website: <a
-                        href={data.Website}
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        { data.Website }
-                    </a>
+                        Website: <Button onClick={openDialogHandler} text={data.Website}/>
                     </p>
                 </div>
             </div>
         </div>
     );
-}
+})
 

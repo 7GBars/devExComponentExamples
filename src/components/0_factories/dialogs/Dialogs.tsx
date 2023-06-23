@@ -1,15 +1,29 @@
 import React from 'react';
 import {Dialog} from "./dialog/Dialog";
-type TDialogsProps = {name?: string}
+import {useStore} from "../../../3_wrappers/StoreWrapper";
+import {toJS} from "mobx";
+import {observer} from "mobx-react-lite";
+
+type TDialogsProps = { name?: string }
 
 function Dialogs(props: TDialogsProps) {
-  const dialogs: Array<any> = [];
-  
+  const dialogsStore = useStore();
+
+  const dialogs = Object.entries(dialogsStore?.dialogs ?? {});
+
+
   return <>
-    { dialogs.map(d => <Dialog />)}
+    {dialogs.map(([dialogKey, dialogInfo]) => (
+      <Dialog
+        key={dialogKey}
+        dialogKey={dialogKey}
+        isOpen={dialogInfo.isOpen}
+        dialogInfo={dialogInfo.dialogPayload}
+      />
+    ))}
   </>
 
 
 }
 
-export default Dialogs;
+export default observer(Dialogs);

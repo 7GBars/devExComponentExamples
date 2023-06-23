@@ -1,23 +1,32 @@
 import React, { useState } from 'react';
 import Popup from 'devextreme-react/popup';
 import Button from 'devextreme-react/button';
+import {observer} from "mobx-react-lite";
+import {useStore} from "../../../../3_wrappers/StoreWrapper";
+import {TDialogPayload} from "../../../../0_State/DialogsStore";
+
 
 type DialogPropsType = {
+  dialogKey: string;
   isOpen?: boolean;
-  info?: string;
+  dialogInfo?: TDialogPayload;
 }
-export const Dialog = ({isOpen = false}:  DialogPropsType) => {
+export const Dialog = observer(({dialogInfo, ...props}:  DialogPropsType) => {
+  const dialogStore = useStore();
+  const onCloseHandler = () => {
+    dialogStore?.closeDialog(props.dialogKey)
+  }
   return (
     <>
-      <Popup visible={isOpen}
+      <Popup visible={props.isOpen}
              dragEnabled={true}>
         <div>
-          <h3>My Popup</h3>
-          <p>This is my popup content. You can put whatever you want in here!</p>
-          <Button text="Close" />
+          <h3>{dialogInfo?.title ?? 'Без заголовка'}</h3>
+          <p>{dialogInfo?.body}</p>
+          <Button onClick={onCloseHandler} text="Close" />
         </div>
       </Popup>
     </>
   );
-}
+})
 
