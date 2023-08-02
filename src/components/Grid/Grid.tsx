@@ -7,6 +7,8 @@ import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 
 import {on} from "devextreme/events";
 import {Button} from "devextreme-react";
+import {ColumnCellTemplateData} from "devextreme/ui/data_grid";
+import {DxElement} from "devextreme/core/element";
 
 
 
@@ -45,8 +47,29 @@ export const Grid = (props: TGridProps) => {
 
     const gridRef = useRef<DataGrid>(null);
     const columnsJSX = columnsInfo.map((c) => {
-        return <Column dataField={c} caption={c + 'test'} cellRender={cellRenderTemplate}/>
-    })
+        return <Column
+          dataField={c}
+          caption={c + 'test'}
+          // cellRender={cellRenderTemplate}
+
+        />
+    });
+
+    columnsJSX.push(<Column
+      dataField={'custom-column'}
+      caption={'CustomColumn'}
+      calculateCellValue={(e: any) => {return '...загрузка'}}
+    />)
+
+    const cellTemplate = (cellElement: DxElement, cellInfo: ColumnCellTemplateData & {key: string}) => {
+      console.log('cellInfo', cellInfo)
+      cellElement.append('value')
+    }
+    const addValueToColumns = () => {
+      setTimeout(() => {
+        gridRef.current?.instance.columnOption('custom-column', 'cellTemplate', cellTemplate)
+      }, 2000);
+    }
     return (<>
             <Button text={'Get Info'} onClick={getGridInfo}/>
             <DataGrid
@@ -58,7 +81,7 @@ export const Grid = (props: TGridProps) => {
                 wordWrapEnabled={false}
                 allowColumnResizing
                 cellHintEnabled
-                onCellPrepared={(e) => {
+                onCellPrepared={(e: any) => {
                     on(e.cellElement, "mouseover", (arg: any) => {
                         if (e.cellElement.offsetWidth < e.cellElement.scrollWidth) {
                             e.cellElement.title = e.displayValue;
@@ -76,6 +99,7 @@ export const Grid = (props: TGridProps) => {
                 <HeaderFilter visible={true} allowSearch={true}/>
                 {columnsJSX}
             </DataGrid>
+        <Button icon={'add'} onClick={(e) => addValueToColumns()}/>
         </>
     );
 }

@@ -11,6 +11,7 @@ import {SimpleGrid} from "./components/Grid/SimpleGrid";
 import {StoreWrapper} from "./3_wrappers/StoreWrapper";
 import {TabPanelEx} from "./components/TabPanel/TabPanel";
 import Dialogs from "./components/0_factories/dialogs/Dialogs";
+import {Grid} from "./components/Grid/Grid";
 
 
 
@@ -24,8 +25,7 @@ function App() {
   return (
     <div className="App">
       <StoreWrapper name={'dialogs'}>
-         <TabPanelEx tabPanelRef={tabRef}/>
-         <Dialogs/>
+         <Grid />
       </StoreWrapper>
     </div>
   );
