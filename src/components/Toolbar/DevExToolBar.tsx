@@ -6,9 +6,9 @@ import './DevExToolBar.scss';
 import DexExButton from "../Button/DexExButton";
 
 const toolbarItemsInfo = [
-  {text: 'Добавить', icon: 'add', onClick: () => console.log('add'), id: new Guid()},
-  {text: 'Удалить', icon: 'remove', onClick: () => console.log('add'), id: new Guid()},
-  {text: 'Изменить', icon: 'edit', onClick: () => console.log('add'), id: new Guid()}
+  {text: 'Добавить', icon: 'add', onClick: (e: any) => console.log(e.component.option('icon')), id: new Guid()},
+  {text: 'Удалить', icon: 'remove', onClick: (e: any) => console.log(e.component.option('icon')), id: new Guid()},
+  {text: 'Изменить', icon: 'edit', onClick: (e: any) => console.log(e.component.option('icon')), id: new Guid()}
 ] as const;
 
 export function DevExToolBar(props: any) {
