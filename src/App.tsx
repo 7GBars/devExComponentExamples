@@ -5,7 +5,7 @@ import 'devexpress-gantt/dist/dx-gantt.css';
 import "react-toastify/dist/ReactToastify.css";
 import {StoreWrapper} from "./3_wrappers/StoreWrapper";
 import {DevExToolBar} from "./components";
-import {TreeListExample} from "./components/TreeList";
+import {TreeListExample} from "./components";
 
 
 
