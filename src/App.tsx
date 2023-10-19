@@ -5,6 +5,7 @@ import 'devexpress-gantt/dist/dx-gantt.css';
 import "react-toastify/dist/ReactToastify.css";
 import {StoreWrapper} from "./3_wrappers/StoreWrapper";
 import {DevExToolBar} from "./components";
+import {TreeListExample} from "./components/TreeList";
 
 
 
@@ -18,7 +19,7 @@ function App() {
   return (
     <div className="App">
       <StoreWrapper name={'dialogs'}>
-        <DevExToolBar/>
+        <TreeListExample blockClassName={'catalogs'}/>
       </StoreWrapper>
     </div>
   );
