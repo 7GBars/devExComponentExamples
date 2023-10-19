@@ -48,4 +48,13 @@ export const catalogs = [
     "IsPrivate": false,
     "CatalogType": 1
   }
-]
+];
+
+export type TCatalogFolderType = {
+  Id: number,
+  Guid: string,
+  Name: string,
+  CatalogFolderType: number,
+  HasChildren: boolean,
+  HeadId?: string
+}
