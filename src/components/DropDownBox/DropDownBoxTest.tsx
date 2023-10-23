@@ -41,7 +41,7 @@ export function DropDownBoxTest<T extends TChildrenType>(props:  TDropDownBoxPro
                 dataSource={props.data.dataSource}
                 value={props.data.selectedBoxValue}
                 onValueChanged={(e) => {
-                    props.data.setSelectedBoxValue(e.value);
+                    e.value === null && props.data.setSelectedBoxValue(e.value);
                 }}
 
                 displayExpr={displayExpr}

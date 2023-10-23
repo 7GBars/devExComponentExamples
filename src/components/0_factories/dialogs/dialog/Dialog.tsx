@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Popup from 'devextreme-react/popup';
 import Button from 'devextreme-react/button';
 import {observer} from "mobx-react-lite";
-import {useStore} from "../../../../3_wrappers/StoreWrapper";
+import {useStore} from "../../../../3_wrappers/DialogStoreWrapper";
 import {TDialogPayload} from "../../../../0_State/DialogsStore";
 
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Dialog} from "./dialog/Dialog";
-import {useStore} from "../../../3_wrappers/StoreWrapper";
+import {useStore} from "../../../3_wrappers/DialogStoreWrapper";
 import {toJS} from "mobx";
 import {observer} from "mobx-react-lite";
 

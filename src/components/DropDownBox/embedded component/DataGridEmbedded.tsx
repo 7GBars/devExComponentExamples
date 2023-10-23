@@ -11,10 +11,10 @@ export function DataGridEmbedded(props: Partial<TDataGridEmbeddedProps>) {
                 selectedRowKeys={props.selectedBoxValue}
                 onSelectionChanged={(e) => {
                     const key = e.selectedRowKeys;
-                    console.log('selection changed')
                     props.setSelectedBoxValue && props.setSelectedBoxValue(key);
-                    props.dropDownBoxRef?.current?.instance.close()
+                    props.dropDownBoxRef?.current?.instance.close();
                 }}
+                keyExpr={'ID'}
                 dataSource={props.dataSource}
                 selection={{mode: 'single'}}
             />

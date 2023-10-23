@@ -3,9 +3,10 @@ import './App.css';
 import 'devextreme/dist/css/dx.light.css';
 import 'devexpress-gantt/dist/dx-gantt.css';
 import "react-toastify/dist/ReactToastify.css";
-import {StoreWrapper} from "./3_wrappers/StoreWrapper";
+import {DialogStoreWrapper} from "./3_wrappers/DialogStoreWrapper";
 import {DevExToolBar} from "./components";
 import {TreeListExample} from "./components";
+import {SimpleWrapperComponent} from "./wrappers";
 
 
 
@@ -18,9 +19,9 @@ function App() {
   const tabRef = useRef();
   return (
     <div className="App">
-      <StoreWrapper name={'dialogs'}>
-        <TreeListExample blockClassName={'catalogs'}/>
-      </StoreWrapper>
+      <DialogStoreWrapper name={'dialogs'}>
+        <SimpleWrapperComponent blockClassName={'catalogs'}/>
+      </DialogStoreWrapper>
     </div>
   );
 }

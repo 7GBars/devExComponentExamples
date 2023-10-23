@@ -5,7 +5,7 @@ const StoreContext = createContext<DialogsStore | undefined>(undefined);
 export const useStore = () => useContext(StoreContext);
 
 type TStoreWrapper = PropsWithChildren<{name: string}>;
-export function StoreWrapper(props: TStoreWrapper) {
+export function DialogStoreWrapper(props: TStoreWrapper) {
   const dialogsStore = new DialogsStore();
   return (
     <StoreContext.Provider value={dialogsStore}>

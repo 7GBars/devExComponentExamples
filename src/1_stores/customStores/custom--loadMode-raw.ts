@@ -7,7 +7,9 @@ export const getCustomSource__loadMode_row = (jsonFile: string): CustomStore<any
         key: 'ID',
         load() {
             return fetch(`https://js.devexpress.com/Demos/WidgetsGallery/JSDemos/data/${jsonFile}`)
-                .then((response) => response.json());
+                .then((response) => {
+                    response.json()
+                });
         },
     });
     return dataSource;

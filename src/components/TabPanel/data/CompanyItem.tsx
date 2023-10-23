@@ -2,7 +2,7 @@ import React from 'react';
 import {Button} from "devextreme-react/button";
 import {ClickEvent} from "devextreme/ui/button";
 import {observer} from "mobx-react-lite";
-import {useStore} from "../../../3_wrappers/StoreWrapper";
+import {useStore} from "../../../3_wrappers/DialogStoreWrapper";
 import {DialogsStore} from "../../../0_State/DialogsStore";
 
 interface CompanyData {

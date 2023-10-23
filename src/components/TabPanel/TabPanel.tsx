@@ -3,7 +3,7 @@ import CheckBox from 'devextreme-react/check-box';
 import TabPanel from 'devextreme-react/tab-panel';
 import './TabPanel.css';
 import {CompanyItem} from './data/CompanyItem'
-import {useStore} from "../../3_wrappers/StoreWrapper";
+import {useStore} from "../../3_wrappers/DialogStoreWrapper";
 import {toJS} from "mobx";
 
 export const multiViewItems = [{
