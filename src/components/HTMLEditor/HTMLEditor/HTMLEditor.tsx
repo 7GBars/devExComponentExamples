@@ -2,6 +2,8 @@ import React, {PropsWithChildren} from 'react';
 import {HtmlEditor} from "devextreme-react";
 import {htmlEditorTools} from "./HTMLEditorTools";
 
+import './HTMLEditor.scss';
+
 type THTMLEditorOwnProps = {componentName?: string}
 type THTMLEditorProps = PropsWithChildren<THTMLEditorOwnProps>;
 
