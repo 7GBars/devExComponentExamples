@@ -15,7 +15,7 @@ export function DevExPopup(props: TDevExPopupProps) {
               contentRender={() => <PopupTestContent/>}
             />
             <Button
-              text={`${dialogOpen ? 'show': 'close'}`}
+              text={`${dialogOpen ? 'close': 'show'}`}
               onClick={e => setDialogOpen(!dialogOpen)}
             />
         </div>

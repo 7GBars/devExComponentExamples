@@ -15,4 +15,14 @@
 
     justify-content: space-between;
   }
+
+  .child-container {
+    background-color: #5c57c9;
+    height: 200px;
+    overflow: auto;
+    .overflow-container {
+      background-color: greenyellow;
+      height: 250px;
+    }
+  }
 }
