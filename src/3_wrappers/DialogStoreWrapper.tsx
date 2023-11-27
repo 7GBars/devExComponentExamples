@@ -11,7 +11,6 @@ export function DialogStoreWrapper(props: TStoreWrapper) {
     <StoreContext.Provider value={dialogsStore}>
       {props.children}
     </StoreContext.Provider>
-
   );
 }
 
