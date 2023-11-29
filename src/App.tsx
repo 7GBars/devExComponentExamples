@@ -7,6 +7,7 @@ import 'devextreme/dist/css/dx.light.css';
 import 'devexpress-gantt/dist/dx-gantt.css';
 import "react-toastify/dist/ReactToastify.css";
 import {DevExPopup} from "./components/Popup/DevExPopup";
+import {SimpleGrid} from "./components/Grid/SimpleGrid";
 
 
 
@@ -18,7 +19,7 @@ function App() {
   return (
     <div className="App">
       <DialogStoreWrapper name={'dialogs'}>
-        <DevExPopup/>
+        <SimpleGrid/>
       </DialogStoreWrapper>
     </div>
   );
