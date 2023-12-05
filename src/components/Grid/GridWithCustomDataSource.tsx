@@ -12,6 +12,10 @@ function GridWithCustomDataSource(props: any) {
         height={550}
         keyExpr={'id'}
         dataSource={customStore}
+        scrolling={{mode: 'virtual'}}
+        paging={{enabled: true}}
+        pager={{visible: true}}
+        remoteOperations={true}
       />
     </>
   );
