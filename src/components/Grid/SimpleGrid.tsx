@@ -42,12 +42,10 @@ export function SimpleGrid() {
           const toolbarItems = gridInstance?.option('toolbar.items') as IItemProps[];
           if (toolbarItems) {
             toolbarItems.push({name: 'addRowButton'});
-            console.log('toolbarItems')
             gridInstance?.option('toolbar.items', toolbarItems)
           } else {
             gridInstance?.option('toolbar.items', [{name: 'addRowButton'}])
           }
-
         }}
       />
     </div>

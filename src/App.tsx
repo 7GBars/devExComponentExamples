@@ -8,6 +8,7 @@ import 'devexpress-gantt/dist/dx-gantt.css';
 import "react-toastify/dist/ReactToastify.css";
 import {DevExPopup} from "./components/Popup/DevExPopup";
 import {SimpleGrid} from "./components/Grid/SimpleGrid";
+import GridWithCustomDataSource from "./components/Grid/GridWithCustomDataSource";
 
 
 
@@ -19,7 +20,7 @@ function App() {
   return (
     <div className="App">
       <DialogStoreWrapper name={'dialogs'}>
-        <SimpleGrid/>
+        <GridWithCustomDataSource/>
       </DialogStoreWrapper>
     </div>
   );
