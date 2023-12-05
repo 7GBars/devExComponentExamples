@@ -1,7 +1,8 @@
 import React from 'react';
 import {DataGrid} from "devextreme-react/data-grid";
-import {linearCongruentialGenerator} from "../helpers/randomGenerator";
+
 import {generateData} from "./data/generateData";
+import {customStore} from "./stores/customStore";
 
 function GridWithCustomDataSource(props: any) {
   const localDataSource = generateData(100);
@@ -9,7 +10,8 @@ function GridWithCustomDataSource(props: any) {
     <>
       <DataGrid
         height={550}
-        dataSource={localDataSource}
+        keyExpr={'id'}
+        dataSource={customStore}
       />
     </>
   );
