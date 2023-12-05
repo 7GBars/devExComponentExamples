@@ -4,6 +4,7 @@ export const customStore = new CustomStore({
   key: 'id',
   loadMode: "processed",
   load(loadOptions) {
+    console.log('load', loadOptions)
     return fetch('https://jsonplaceholder.typicode.com/todos')
       .then(res => res.json())
       .then(data => {
