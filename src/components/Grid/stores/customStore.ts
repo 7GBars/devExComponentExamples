@@ -7,6 +7,11 @@ export const customStore = new CustomStore({
     return fetch('https://jsonplaceholder.typicode.com/todos')
       .then(res => res.json())
       .then(data => {
+        if (loadOptions.skip && loadOptions.take) {
+          const currentPage = loadOptions.skip / loadOptions.take;
+          console.log('currentPage', currentPage);
+        }
+
         return {data, totalCount: data.length}
       })
       return Promise.resolve({data: [], totalCount: 0})
