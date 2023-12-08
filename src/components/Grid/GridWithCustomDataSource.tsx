@@ -20,6 +20,7 @@ function GridWithCustomDataSource(props: any) {
         pager={{visible: true}}
         remoteOperations={true}
         stateStoring={{enabled: true}}
+        filterRow={{visible: true}}
       />
     </div>
   );
