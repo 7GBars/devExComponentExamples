@@ -14,7 +14,15 @@ import GridWithCustomDataSource from "./components/Grid/GridWithCustomDataSource
 
 
 
+import DataGrid from "devextreme/ui/data_grid";
 
+DataGrid.defaultOptions({
+  options: {
+    scrolling: {
+      legacyMode: true
+    }
+  }
+});
 function App() {
   const tabRef = useRef();
   return (

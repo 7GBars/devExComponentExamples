@@ -12,12 +12,16 @@ function GridWithCustomDataSource(props: any) {
   return (
     <div className={s['grid--remote-operation']}>
       <DataGrid
-        height={'100%'}
+        height={'80vh'}
+        width={'80vw'}
+        showBorders
+
         keyExpr={'id'}
         dataSource={customStore}
+
         scrolling={{mode: 'virtual'}}
-        paging={{enabled: true}}
-        pager={{visible: true}}
+        paging={{pageSize: 100, enabled: true}}
+        pager={{visible: true, showPageSizeSelector: true}}
         remoteOperations={true}
         stateStoring={{enabled: true}}
         filterRow={{visible: true}}
