@@ -1,0 +1,15 @@
+.grid--remote-operation {
+  height: 100%;
+  .issues-column {
+    /* свойство wordWrapEnabled не работает - это объодной путь*/
+    word-wrap: break-word;
+    white-space: nowrap;
+    background-color: #00b46e;
+  }
+}
+.issues-column {
+  /* свойство wordWrapEnabled не работает - это объодной путь*/
+  word-wrap: break-word;
+  white-space: nowrap;
+  background-color: #00b46e;
+}
