@@ -15,6 +15,8 @@ import GridWithCustomDataSource from "./components/Grid/GridWithCustomDataSource
 
 
 import DataGrid from "devextreme/ui/data_grid";
+import {TreeList} from "devextreme-react";
+import {TreeListExample} from "./components";
 
 DataGrid.defaultOptions({
   options: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import {TabPanelWithChildren} from "../TabPanel/TabPanelWithChildrens";
-import {TestProps} from "../../commonTypes/propsTypes";
+
 
 import './testing.scss';
 import {MyHtmlEditor} from "./HTMLEditor/HTMLEditor";
@@ -11,7 +11,7 @@ const tabItems = [
   { title: 'Tab 2', text: 'Content 2' },
   { title: 'Tab 3', text: 'Content 3' },
 ];
-export function Testing(props:  TestProps) {
+export function Testing() {
 
     return (
         <div className={'container'}>

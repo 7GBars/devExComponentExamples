@@ -1,8 +1,9 @@
-import React, {PropsWithChildren, useState} from 'react';
+import React, {PropsWithChildren, useRef, useState} from 'react';
 import {SelectBox, TreeList} from "devextreme-react";
 import {catalogs, TCatalogFolderType} from "./data/catalogs";
 import './TreeListExample.scss';
 import ArrayStore from "devextreme/data/array_store";
+import {Button} from "devextreme-react/button";
 
 
 type TTreeListProps = PropsWithChildren<{
@@ -16,6 +17,7 @@ export const TreeListExample = (
     key: 'Guid',
     data: catalogs.find(c => c.Guid === selectedCatalog)?.CatalogFolders ?? []
   });
+  const treeRef = useRef<TreeList>(null);
   return (
     <div className={blockClassName}>
       <div className={`${blockClassName}__select-box`}>
@@ -34,6 +36,7 @@ export const TreeListExample = (
         {selectedCatalog &&
           <TreeList
             id="treeList"
+            ref={treeRef}
             dataSource={store}
             columns={[{dataField: 'Name', caption: 'Наименование'}]}
             keyExpr={'Guid'}
@@ -64,6 +67,13 @@ export const TreeListExample = (
         }
 
       </div>
+      <Button text={'Достать узлы'} onClick={(e) => {
+        treeRef.current?.instance.forEachNode((n: any) => {
+
+          const a = treeRef.current?.instance.getNodeByKey(n)
+          console.log(a)
+        })
+      }}/>
     </div>
   );
 }
