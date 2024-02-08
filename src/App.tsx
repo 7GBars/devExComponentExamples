@@ -18,6 +18,7 @@ import DataGrid from "devextreme/ui/data_grid";
 import {TreeList} from "devextreme-react";
 import {TreeListExample} from "./components";
 import Validation from "./units/validation/validation";
+import {GridCustomToolbar} from "./components/Grid/GridCustomToolbar";
 
 DataGrid.defaultOptions({
   options: {
@@ -31,7 +32,7 @@ function App() {
   return (
     <div className="App">
       <DialogStoreWrapper name={'dialogs'}>
-        <Validation/>
+        <GridCustomToolbar/>
       </DialogStoreWrapper>
     </div>
   );
