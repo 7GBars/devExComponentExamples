@@ -29,7 +29,10 @@ export function StateStoringTest() {
         keyExpr={'id'}
         stateStoring={stateStoringOptions}
         selection={{mode: 'single'}}
-        columnChooser={{enabled: true, mode: 'select'}}
+        columnChooser={{
+          enabled: true, // без этого не сохраняет выбраные колонки
+          mode: 'select'
+      }}
 
         allowColumnResizing={true} // без этого свойства не работает сохранение размеров
       >
