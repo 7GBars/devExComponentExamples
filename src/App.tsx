@@ -19,6 +19,7 @@ import {TreeList} from "devextreme-react";
 import {TreeListExample} from "./components";
 import Validation from "./units/validation/validation";
 import {GridCustomToolbar} from "./components/Grid/GridCustomToolbar";
+import {StateStoringTest} from "./components/Grid/stateStoring/StateStoringTest";
 
 DataGrid.defaultOptions({
   options: {
@@ -32,7 +33,7 @@ function App() {
   return (
     <div className="App">
       <DialogStoreWrapper name={'dialogs'}>
-        <GridWithCustomDataSource />
+        <StateStoringTest/>
       </DialogStoreWrapper>
     </div>
   );
