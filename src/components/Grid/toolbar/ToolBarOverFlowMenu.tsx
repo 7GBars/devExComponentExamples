@@ -16,7 +16,7 @@ export const ToolBarOverFlowMenu = () => {
     {widget: 'dxButton', options: {icon: 'message', text: 'Сообщения'}, location: 'after', locateInMenu: 'auto', showText: 'inMenu'},
     {widget: 'dxButton', options: {icon: 'like', text: 'Лайки'}, location: 'after', locateInMenu: 'auto', showText: 'inMenu'},
     {widget: 'dxButton', options: {icon: 'menu'}, location: 'after', locateInMenu: 'auto'}
-  ]
+  ];
 const dataGridRef = useRef<DataGrid>(null);
 
   return (
@@ -27,7 +27,6 @@ const dataGridRef = useRef<DataGrid>(null);
         dataSource={dataSource}
         keyExpr={'id'}
         columnChooser={{enabled: true}}
-
       >
         <Toolbar visible items={toolBarItems}/>
 

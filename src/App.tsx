@@ -21,6 +21,9 @@ import Validation from "./units/validation/validation";
 import {GridCustomToolbar} from "./components/Grid/GridCustomToolbar";
 import {StateStoringTest} from "./components/Grid/stateStoring/StateStoringTest";
 import {ToolBarOverFlowMenu} from "./components/Grid/toolbar/ToolBarOverFlowMenu";
+import 'react-reflex/styles.css'
+import {ReflexContainer, ReflexElement, ReflexSplitter} from "react-reflex";
+import {MainStoreWrapper} from "./HOCs/MainStoreWrapper";
 
 DataGrid.defaultOptions({
   options: {
@@ -33,9 +36,17 @@ function App() {
   const tabRef = useRef();
   return (
     <div className="App">
-      <DialogStoreWrapper name={'dialogs'}>
-        <ToolBarOverFlowMenu/>
-      </DialogStoreWrapper>
+      <MainStoreWrapper>
+        <ReflexContainer orientation="vertical">
+          <ReflexElement className="left-pane">
+            <ToolBarOverFlowMenu/>
+          </ReflexElement>
+          <ReflexSplitter/>
+          <ReflexElement className="right-pane">
+            <ToolBarOverFlowMenu/>
+          </ReflexElement>
+        </ReflexContainer>
+      </MainStoreWrapper>
     </div>
   );
 }
