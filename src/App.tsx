@@ -20,10 +20,11 @@ import {TreeListExample} from "./components";
 import Validation from "./units/validation/validation";
 import {GridCustomToolbar} from "./components/Grid/GridCustomToolbar";
 import {StateStoringTest} from "./components/Grid/stateStoring/StateStoringTest";
-import {ToolBarOverFlowMenu} from "./components/Grid/toolbar/ToolBarOverFlowMenu";
+import {ToolBarOverFlowMenu} from "./components/Grid/toolbar/overFlowmenu/ToolBarOverFlowMenu";
 import 'react-reflex/styles.css'
 import {ReflexContainer, ReflexElement, ReflexSplitter} from "react-reflex";
 import {MainStoreWrapper} from "./HOCs/MainStoreWrapper";
+import {SplitterWrapper} from "./components/Grid/toolbar/overFlowmenu/spliterrWrapper";
 
 DataGrid.defaultOptions({
   options: {
@@ -36,17 +37,7 @@ function App() {
   const tabRef = useRef();
   return (
     <div className="App">
-      <MainStoreWrapper>
-        <ReflexContainer orientation="vertical">
-          <ReflexElement className="left-pane">
-            <ToolBarOverFlowMenu/>
-          </ReflexElement>
-          <ReflexSplitter/>
-          <ReflexElement className="right-pane">
-            <ToolBarOverFlowMenu/>
-          </ReflexElement>
-        </ReflexContainer>
-      </MainStoreWrapper>
+      <SplitterWrapper/>
     </div>
   );
 }

@@ -1,11 +1,13 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Column,
   DataGrid, Item, Toolbar
 } from 'devextreme-react/data-grid';
-import {dataSource} from "../data/data";
 
-import './styles.scss';
+import {dataSource} from "../../data/data";
+import {useMainStore} from "../../../../HOCs/MainStoreWrapper";
+
+import '../styles.scss';
 
 
 export const ToolBarOverFlowMenu = () => {
@@ -18,6 +20,15 @@ export const ToolBarOverFlowMenu = () => {
     {widget: 'dxButton', options: {icon: 'menu'}, location: 'after', locateInMenu: 'auto'}
   ];
 const dataGridRef = useRef<DataGrid>(null);
+  const  {mainStore} = useMainStore();
+  const [gridElement, setGridElement] = useState<Element | null>(null);
+
+  useEffect(() => {
+    const myObserver = new ResizeObserver(entries => {
+      mainStore.ComponentInstance?.updateDimensions();
+    });
+    gridElement && myObserver.observe(gridElement);
+  }, [gridElement]);
 
   return (
     <div className={'container--ToolBarOverFlowMenu'}>
@@ -27,6 +38,10 @@ const dataGridRef = useRef<DataGrid>(null);
         dataSource={dataSource}
         keyExpr={'id'}
         columnChooser={{enabled: true}}
+        onInitialized={(e) => {
+          mainStore.setComponentInstance(e.component!)
+          setGridElement(e.element!)
+        }}
       >
         <Toolbar visible items={toolBarItems}/>
 
