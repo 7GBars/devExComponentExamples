@@ -25,6 +25,7 @@ import 'react-reflex/styles.css'
 import {ReflexContainer, ReflexElement, ReflexSplitter} from "react-reflex";
 import {MainStoreWrapper} from "./HOCs/MainStoreWrapper";
 import {SplitterWrapper} from "./components/Grid/toolbar/overFlowmenu/spliterrWrapper";
+import {GantEx1} from "./components/Gantt/examples/ex1/gantEx1";
 
 DataGrid.defaultOptions({
   options: {
@@ -37,7 +38,7 @@ function App() {
   const tabRef = useRef();
   return (
     <div className="App">
-      <SplitterWrapper/>
+      <GantEx1/>
     </div>
   );
 }

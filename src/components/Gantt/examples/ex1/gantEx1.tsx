@@ -33,79 +33,34 @@ export function GantEx1(props: TGantDevExProps) {
     }
     return (
         <>
-
-
             <Gantt
                 ref={gantRef}
                 height={700}
                 onTaskClick={(e) => {
+                    console.log('e', e.element)
                     currentTaskRef.current = e.data;
                     localStorage.setItem('currentTask', JSON.stringify(e.data))
                 }}
-
-
-
                 onContentReady={(e) => {
                     // const savedCurrentTask =  JSON.parse(localStorage.getItem('currentTask') ?? '');
                     const gantInstance = gantRef.current?.instance;
-
-
                     const [scaleType, scrollInfo] = ShowTaskHelper.getInitData();
-
-
                     setTimeout(() => {
-
-
                         if(gantInstance) {
                             ShowTaskHelper.getScrollViewAndStartToSavePosition(gantInstance!);
                             ShowTaskHelper.SetScaleType(gantInstance, scaleType as any).then(() => {
                                 ShowTaskHelper.GoToSavedScrollPosition(gantInstance);
-
                             })
-
                             gantInstance?.on('scaleCellPrepared', scaleScanner);
                         }
                     }, 0)
-                    // if (savedCurrentTask && gantInstance) {
-                    //     setTimeout(() => {
-                    //         gantInstance.option('selectedRowKey', savedCurrentTask.id);
-                    //         const ganttScrollView = ShowTaskHelper.GetGanttScrollViewInstance(gantInstance, gantScrollViewRef);
-                    //         ganttScrollView.on('scroll', (e: any) => {
-                    //             const positionInfo = e.scrollOffset as { top: number, left: number }
-                    //             if (positionInfo.top == 0) return;
-                    //             else {
-                    //                 localStorage.setItem('scrollInfo', JSON.stringify(e.scrollOffset))
-                    //             }
-                    //         });
-                    //
-                    //
-                    //         // ShowTaskHelper.ShowTaskOnDiagram(savedCurrentTask, gantInstance).then(() => {
-                    //         //     let savedScrollPosition = JSON.parse(localStorage.getItem('scrollInfo') ?? '')
-                    //         //     if (savedScrollPosition) {
-                    //         //         ganttScrollView.scrollTo(savedScrollPosition);
-                    //         //     }
-                    //         // })
-                    //     }, 0);
                     }
-
-                    // console.log('onContentReady')
-                    // setTimeout(() => {
-                    //     const gantInstance = gantRef.current!.instance;
-                    //     //@ts-ignore
-                    //     let a = gantInstance._ganttView._taskAreaContainer._scrollView;
-                    //     // a.on('scroll', (e: any) => {
-                    //     //     console.log(e.scrollOffset);
-                    //     // })
-                    //     a.scrollTo(JSON.parse(localStorage.getItem('scrollInfo')!))
-                    //     // console.log('gantInstance._ganttTreeList', a);
-                    // }, 100)
-
                 }
             >
 
-                <Column dataField="title" caption="Subject" width={300} />
-                <Column dataField="start" caption="Start Date" />
-                <Column dataField="end" caption="End Date" />
+                <Column dataField="title" caption="Наименование" width={300} />
+                <Column dataField="start" caption="Начало" />
+                <Column dataField="end" caption="Конец" />
                 <Toolbar>
                     <Item options={{
                         hint: "Показать на диаграмме",
