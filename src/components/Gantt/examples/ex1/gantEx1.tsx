@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {Button, Gantt, ScrollView} from "devextreme-react";
+import {Button, DropDownButton, Gantt, ScrollView} from "devextreme-react";
 
 import {
     tasks, dependencies, resources, resourceAssignments, TTaskType,
@@ -70,6 +70,9 @@ export function GantEx1(props: TGantDevExProps) {
                             await ShowTaskHelper.ShowTaskOnDiagram(currentTaskRef.current, gantInstance);
                         },
                     }} />
+                  <Item>
+                    <DropDownButton text={'Кнопка'} />
+                  </Item>
                 </Toolbar>
                 <Tasks dataSource={tasks} />
                 <Dependencies dataSource={dependencies} />

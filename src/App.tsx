@@ -38,7 +38,7 @@ function App() {
   const tabRef = useRef();
   return (
     <div className="App">
-      <DevExToolBar/>
+      <GantEx1/>
     </div>
   );
 }
