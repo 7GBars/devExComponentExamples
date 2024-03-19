@@ -70,7 +70,7 @@ export function GantEx1(props: TGantDevExProps) {
                             await ShowTaskHelper.ShowTaskOnDiagram(currentTaskRef.current, gantInstance);
                         },
                     }} />
-                  <Item>
+                  <Item widget={'dxDropDownButton'}>
                     <DropDownButton text={'Кнопка'} />
                   </Item>
                 </Toolbar>
