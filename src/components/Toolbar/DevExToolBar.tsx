@@ -1,10 +1,11 @@
 import React from 'react';
-import {Toolbar} from "devextreme-react";
+import {DropDownButton, Toolbar} from "devextreme-react";
 import {Item} from "devextreme-react/toolbar";
 import Guid from "devextreme/core/guid";
 import './DevExToolBar.scss';
 import DexExButton from "../Button/DexExButton";
 import {ClickEvent} from "devextreme/ui/button";
+import {Button} from "devextreme-react/button";
 
 
 
@@ -45,6 +46,9 @@ export function DevExToolBar(props: any) {
             render={(e) => <DexExButton {...e} {...i}/>}
           />
         })}
+        <Item>
+          <DropDownButton text={'Кнопка'} />
+        </Item>
       </Toolbar>
     </div>
   );
