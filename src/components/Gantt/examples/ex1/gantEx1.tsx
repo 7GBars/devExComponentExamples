@@ -9,6 +9,7 @@ import {Column, Dependencies, Item, ResourceAssignments, Resources, Tasks, Toolb
 
 
 import './gantDevExStyles.css';
+import {DropDownButtonItemTemplate} from "../components/DropDownButtonItemTemplate";
 
 type TGantDevExProps = {
     test?: boolean;
@@ -31,6 +32,7 @@ export function GantEx1(props: TGantDevExProps) {
         let border = e.separatorElement;
         border.style.borderColor = "steelBlue";
     }
+    const [count, setCount] = useState(0)
     return (
         <>
             <Gantt
@@ -71,13 +73,13 @@ export function GantEx1(props: TGantDevExProps) {
                         },
                     }} />
                   <Item widget={'dxDropDownButton'}>
-                    <DropDownButton text={'Кнопка'} />
+                    <DropDownButtonItemTemplate />
                   </Item>
                 </Toolbar>
                 <Tasks dataSource={tasks} />
                 <Dependencies dataSource={dependencies} />
             </Gantt>
-
+            <Button onClick={e => setCount(c => ++c)}/>
         </>
     );
 }
