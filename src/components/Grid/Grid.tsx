@@ -99,7 +99,6 @@ export const Grid = (props: TGridProps) => {
                 <HeaderFilter visible={true} allowSearch={true}/>
                 {columnsJSX}
             </DataGrid>
-        <Button icon={'add'} onClick={(e) => addValueToColumns()}/>
         </>
     );
 }

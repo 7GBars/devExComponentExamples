@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import 'react-reflex/styles.css';
 
 import './index.css';
+import {MainLayoutWrapper} from "./HOCs/MainLayoutWrapper";
 
 
 setButtonDefaultOptions()
@@ -18,7 +19,9 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
+  <MainLayoutWrapper displayName={'AppWrapper'}>
     <App />
+  </MainLayoutWrapper>
 );
 
 
