@@ -33,11 +33,13 @@ export function GantEx1(props: TGantDevExProps) {
         border.style.borderColor = "steelBlue";
     }
     const [count, setCount] = useState(0)
+    const TaskTemplate = (props: {a: string, b: number}) => <div>as</div>
     return (
         <>
             <Gantt
                 ref={gantRef}
                 height={700}
+                taskContentRender={() => <TaskTemplate a={'s'} b={2}/>}
                 onTaskClick={(e) => {
                     console.log('e', e.element)
                     currentTaskRef.current = e.data;
