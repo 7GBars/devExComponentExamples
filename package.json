@@ -57,5 +57,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "devextreme-cli": "^1.6.7",
+    "devextreme-themebuilder": "22.2.4"
   }
 }
