@@ -7,7 +7,6 @@ type TDropDownButtonItemTemplateProps = {
 };
 
 export const DropDownButtonItemTemplate: FC<TDropDownButtonItemTemplateProps> = React.memo((props) => {
-  debugger
   return (
    <DropDownButton text={'Название'}/>
   );

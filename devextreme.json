@@ -1,0 +1,21 @@
+{
+  "applicationEngine": "react",
+  "build": {
+    "commands": [
+      {
+        "command": "build-theme",
+        "options": {
+          "inputFile": "src/themesMetadata/metadata.base.json",
+          "outputFile": "public/css/theme.base.css"
+        }
+      },
+      {
+        "command": "build-theme",
+        "options": {
+          "inputFile": "src/themesMetadata/metadata.dark.json",
+          "outputFile": "public/css/theme.dark.css"
+        }
+      }
+    ]
+  }
+}
