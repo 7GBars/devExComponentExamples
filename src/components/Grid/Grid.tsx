@@ -46,9 +46,9 @@ export const Grid = (props: TGridProps) => {
     };
 
     const gridRef = useRef<DataGrid>(null);
-    const columnsJSX = columnsInfo.map((c) => {
+    const columnsJSX = columnsInfo.map((c, i) => {
         return <Column
-          key={c.toString()}
+          key={i}
           dataField={c}
           caption={c + 'test'}
           // cellRender={cellRenderTemplate}
@@ -57,6 +57,7 @@ export const Grid = (props: TGridProps) => {
     });
 
     columnsJSX.push(<Column
+      key={'custom-column'}
       dataField={'custom-column'}
       caption={'CustomColumn'}
       calculateCellValue={(e: any) => {return '...загрузка'}}

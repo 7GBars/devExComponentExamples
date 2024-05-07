@@ -1,7 +1,8 @@
 import React, {FC, PropsWithChildren} from 'react';
 
 import DevextremeUiThemes from "devextreme/ui/themes";
-import ButtonComponent from "../components/myComponents/themeSwitcher/ThemeSwitcher";
+
+import ToggleSwitch from "../components/myComponents/themeSwitcher/ThemeSwitcher";
 
 type TMainLayoutWrapperProps = PropsWithChildren<{
   displayName: string;
@@ -17,8 +18,8 @@ const themeMap = {
 export const MainLayoutWrapper: FC<TMainLayoutWrapperProps> = ({children}) => {
   const currentTheme = DevextremeUiThemes.current();
   return (
-    <div>
-      <ButtonComponent currenttheme={currentTheme}/>
+    <div >
+      <ToggleSwitch />
       {children}
     </div>
   );
