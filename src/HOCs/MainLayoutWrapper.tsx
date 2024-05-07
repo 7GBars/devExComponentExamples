@@ -19,7 +19,7 @@ export const MainLayoutWrapper: FC<TMainLayoutWrapperProps> = ({children}) => {
   const currentTheme = DevextremeUiThemes.current();
   return (
     <div >
-      <ToggleSwitch />
+      <ToggleSwitch labelText={'Сменить тему'}/>
       {children}
     </div>
   );
