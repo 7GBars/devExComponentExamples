@@ -48,6 +48,7 @@ export const Grid = (props: TGridProps) => {
     const gridRef = useRef<DataGrid>(null);
     const columnsJSX = columnsInfo.map((c) => {
         return <Column
+          key={c.toString()}
           dataField={c}
           caption={c + 'test'}
           // cellRender={cellRenderTemplate}

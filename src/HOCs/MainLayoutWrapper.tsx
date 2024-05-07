@@ -1,6 +1,7 @@
 import React, {FC, PropsWithChildren} from 'react';
-import {Button} from "devextreme-react/button";
+
 import DevextremeUiThemes from "devextreme/ui/themes";
+import ButtonComponent from "../components/myComponents/themeSwitcher/ThemeSwitcher";
 
 type TMainLayoutWrapperProps = PropsWithChildren<{
   displayName: string;
@@ -14,16 +15,10 @@ const themeMap = {
   [themes.dark]: themes.base
 };
 export const MainLayoutWrapper: FC<TMainLayoutWrapperProps> = ({children}) => {
+  const currentTheme = DevextremeUiThemes.current();
   return (
     <div>
-      <Button
-        text={'Тест'}
-        onClick={(e) => {
-          const currentTheme = DevextremeUiThemes.current();
-          DevextremeUiThemes.current(themeMap[currentTheme]);
-        }}
-      />
-
+      <ButtonComponent currenttheme={currentTheme}/>
       {children}
     </div>
   );
